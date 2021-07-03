@@ -1,0 +1,74 @@
+-------------Start------------
+-----------------Postprocessing----------------
+ln: failed to create symbolic link './01_VariantCalling/VariantCalling/FINAL/All_pigs.variant.combined.GT.SNP.flt.vcf.gz': File exists
+ln: failed to create symbolic link './01_VariantCalling/VariantCalling/FINAL/Mini_Mini1.addRG.marked.sort.bam': File exists
+ln: failed to create symbolic link './01_VariantCalling/VariantCalling/FINAL/Mini_Mini2.addRG.marked.sort.bam': File exists
+
+Plink
+/opt/conda/bin/plink --threads 5 --geno 0.01 --maf 0.05 --hwe 0.000001 --make-bed --chr-set 29 --vcf ./01_VariantCalling/VariantCalling/FINAL/Mini_Mini2.addRG.marked.sort.bam --out /TESTDT/02_Postprocessing/plink/All_pigs &> /TESTDT/02_Postprocessing/logs/plink_1.log
+/opt/conda/bin/vcftools --vcf ./01_VariantCalling/VariantCalling/FINAL/Mini_Mini2.addRG.marked.sort.bam --out /TESTDT/02_Postprocessing/plink/All_pigs --plink &> /TESTDT/02_Postprocessing/logs/plink_2.log
+
+Hapmap
+/poppipePOP/script/vcf2hapmap.pl ./01_VariantCalling/VariantCalling/FINAL/Mini_Mini2.addRG.marked.sort.bam /TESTDT/02_Postprocessing/Hapmap &> /TESTDT/02_Postprocessing/logs/hapmap.log
+----------------Population--------------
+
+PCA
+/poppipePOP/script/PCA.pl -p /TESTDT/param/PCA.txt -s ./main_sample.txt -o /TESTDT/03_Population/PCA &> /TESTDT/03_Population/logs/pca.log
+
+SNPhylo
+/poppipePOP/script/SNPHYLO.pl -p /TESTDT/param/SNPhylo.txt -o /TESTDT/03_Population/SNPhylo &> /TESTDT/03_Population/logs/snphylo.log
+
+STRUCTURE
+/poppipePOP/script/STRUCTURE.pl -p /TESTDT/param/structure.txt -s /TESTDT/main_sample.txt -o /TESTDT/03_Population/STRUCTURE &> /TESTDT/03_Population/logs/structure.log
+
+Fst
+/poppipePOP/script/FST.pl -p /TESTDT/param/Fst.txt -o /TESTDT/03_Population/Fst -s ./main_sample.txt &> /TESTDT/03_Population/logs/fst.log
+
+Effective Size
+/poppipePOP/script/psmc.pl -t 5 -p /TESTDT/param/effective_size.txt -o /TESTDT/03_Population/EffectiveSize &> /TESTDT/03_Population/logs/effectivesize.log
+
+ADMIXTOOLS
+/poppipePOP/script/ADMIXTOOLS.up.pl -p /TESTDT/param/admixtools.txt -s ./main_sample.txt -o /TESTDT/03_Population/ADMIXTOOLS &> /TESTDT/03_Population/logs/admixtools.log
+
+VCFtools - UNKNOWN
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf ./01_VariantCalling/VariantCalling/FINAL/Mini_Mini2.addRG.marked.sort.bam
+	--out /TESTDT/02_Postprocessing/plink/All_pigs
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of ./01_VariantCalling/VariantCalling/FINAL/Mini_Mini2.addRG.marked.sort.bam
+PLINK v1.90b6.21 64-bit (19 Oct 2020)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2020 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to /TESTDT/02_Postprocessing/plink/All_pigs.log.
+Options in effect:
+  --chr-set 29
+  --geno 0.01
+  --hwe 0.000001
+  --maf 0.05
+  --make-bed
+  --out /TESTDT/02_Postprocessing/plink/All_pigs
+  --threads 5
+  --vcf ./01_VariantCalling/VariantCalling/FINAL/Mini_Mini2.addRG.marked.sort.bam
+
+1032001 MB RAM detected; reserving 516000 MB for main workspace.
+Error: Failed to open
+./01_VariantCalling/VariantCalling/FINAL/Mini_Mini2.addRG.marked.sort.bam.
+(--vcf expects a complete filename; did you forget '.vcf' at the end?)
+Can't locate Sort/Key/Natural.pm in @INC (you may need to install the Sort::Key::Natural module) (@INC contains: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.26.1 /usr/local/share/perl/5.26.1 /usr/lib/x86_64-linux-gnu/perl5/5.26 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl/5.26 /usr/share/perl/5.26 /usr/local/lib/site_perl /usr/lib/x86_64-linux-gnu/perl-base) at /poppipePOP/script/ADMIXTOOLS.up.pl line 20.
+BEGIN failed--compilation aborted at /poppipePOP/script/ADMIXTOOLS.up.pl line 20.
+Can't locate Sort/Key/Natural.pm in @INC (you may need to install the Sort::Key::Natural module) (@INC contains: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.26.1 /usr/local/share/perl/5.26.1 /usr/lib/x86_64-linux-gnu/perl5/5.26 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl/5.26 /usr/share/perl/5.26 /usr/local/lib/site_perl /usr/lib/x86_64-linux-gnu/perl-base) at /poppipePOP/script/psmc.pl line 27.
+BEGIN failed--compilation aborted at /poppipePOP/script/psmc.pl line 27.
+Can't locate Parallel/ForkManager.pm in @INC (you may need to install the Parallel::ForkManager module) (@INC contains: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.26.1 /usr/local/share/perl/5.26.1 /usr/lib/x86_64-linux-gnu/perl5/5.26 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl/5.26 /usr/share/perl/5.26 /usr/local/lib/site_perl /usr/lib/x86_64-linux-gnu/perl-base) at /poppipePOP/script/STRUCTURE.pl line 26.
+BEGIN failed--compilation aborted at /poppipePOP/script/STRUCTURE.pl line 26.
+Use of uninitialized value $vcf_f in pattern match (m//) at /poppipePOP/script/vcf2hapmap.pl line 13.
+Use of uninitialized value $_[0] in substitution (s///) at /usr/share/perl/5.26/File/Basename.pm line 180.
+fileparse(): need a valid pathname at /poppipePOP/script/vcf2hapmap.pl line 17.
+Can't locate Sort/Key/Natural.pm in @INC (you may need to install the Sort::Key::Natural module) (@INC contains: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.26.1 /usr/local/share/perl/5.26.1 /usr/lib/x86_64-linux-gnu/perl5/5.26 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl/5.26 /usr/share/perl/5.26 /usr/local/lib/site_perl /usr/lib/x86_64-linux-gnu/perl-base) at /poppipePOP/script/PCA.pl line 26.
+BEGIN failed--compilation aborted at /poppipePOP/script/PCA.pl line 26.
+Can't locate Sort/Key/Natural.pm in @INC (you may need to install the Sort::Key::Natural module) (@INC contains: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.26.1 /usr/local/share/perl/5.26.1 /usr/lib/x86_64-linux-gnu/perl5/5.26 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl/5.26 /usr/share/perl/5.26 /usr/local/lib/site_perl /usr/lib/x86_64-linux-gnu/perl-base) at /poppipePOP/script/FST.pl line 28.
+BEGIN failed--compilation aborted at /poppipePOP/script/FST.pl line 28.
+Can't locate Switch.pm in @INC (you may need to install the Switch module) (@INC contains: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.26.1 /usr/local/share/perl/5.26.1 /usr/lib/x86_64-linux-gnu/perl5/5.26 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl/5.26 /usr/share/perl/5.26 /usr/local/lib/site_perl /usr/lib/x86_64-linux-gnu/perl-base) at /poppipePOP/script/SNPHYLO.pl line 26.
+BEGIN failed--compilation aborted at /poppipePOP/script/SNPHYLO.pl line 26.
