@@ -1,10 +1,16 @@
-# PopPipe
+# Readme 작성
+
+## PopPipe
+
+---
+
  A comprehensive pipeline for population genetic analysis containing Read mapping, Variant calling, and Population genetic analysis
 
 ![fig1.png](Readme%20%E1%84%8C%E1%85%A1%E1%86%A8%E1%84%89%E1%85%A5%E1%86%BC%208472678d2d5f4e37add2713b08d1af86/fig1.png)
 
 ### Install PopPipe
---
+
+---
 
 ```
 1. Download source 
@@ -13,7 +19,7 @@
 
 ### Install PopPipe using Docker
 
-
+---
 
 ```
 1. Install docker (https://docs.docker.com/install/linux/docker-ce/ubuntu)
@@ -34,7 +40,7 @@
 
 ### Prepare parameter files
 
-
+---
 
 Check out the directory `./bin/params/` containing example parameter files
 
@@ -184,16 +190,16 @@ Check out the directory `./bin/params/` containing example parameter files
 
 ### Run PopPipe
 
-
+---
 
 Parameters for run `main.py`
 
 ```python
 #run all steps
-./main.py -D 0 -P ./main_param.txt -I ./main_input_pre.txt -A ./main_sample.txt -V 1 -J 8 &> logs
+./main.py -P ./main_param.txt -I ./main_input_pre.txt -A ./main_sample.txt -V 1 -J 8 &> logs
 
 #from variant.vcf to population analysis results
-./main.py -D 0 -P ./main_param.txt -I ./main_input_pre.txt -A ./main_sample.txt -V 1 -J 8 &> 02.logs
+./main.py -P ./main_param.txt -I ./main_input_pre.txt -A ./main_sample.txt -V 1 -J 8 &> 02.logs
 
 #
 ./main.py -P ./main_param.txt -I ./main_input_pre.txt -A ./main_sample.txt -V 1 -J 8 &> 03.logs
@@ -204,7 +210,7 @@ Parameters for run `main.py`
 
 ### PopPipe Results
 
-
+---
 
 Results from all steps
 
@@ -285,7 +291,7 @@ Results from all steps
 
 ### Run PopPipe for making the results
 
-
+---
 
 - DATA
     - Four cattle population (Jersey, Simmental, Angus, Holstein from NCBI SRA, PRJNA238491, DOI: [10.1038/ng.3034](https://doi.org/10.1038/ng.3034))
@@ -297,7 +303,7 @@ Results from all steps
     - Command
     
     ```python
-    ./main.py -D 0 -P ./main_param.txt -I ./main_input_pre.txt -A ./main_sample.txt -V 1 -J 8 &> logs
+    ./main.py -P ./main_param.txt -I ./main_input_pre.txt -A ./main_sample.txt -V 1 -J 8 &> logs
     ```
     
     - see `example/main_input_pre.txt`
@@ -306,11 +312,12 @@ Results from all steps
 
 ### **Included third party tools**
 
-
+---
 
 See `Requirements/thirdPartyTools.txt`
 
 ### Contact
 
+---
 
 [bioinfolabkr@gmail.com](mailto:bioinfolabkr@gmail.com)
