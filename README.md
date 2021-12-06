@@ -13,7 +13,7 @@
 
 ### Install PopPipe using Docker
 
----
+
 
 ```
 1. Install docker (https://docs.docker.com/install/linux/docker-ce/ubuntu)
@@ -34,7 +34,7 @@
 
 ### Prepare parameter files
 
----
+
 
 Check out the directory `./bin/params/` containing example parameter files
 
@@ -184,7 +184,7 @@ Check out the directory `./bin/params/` containing example parameter files
 
 ### Run PopPipe
 
----
+
 
 Parameters for run `main.py`
 
@@ -204,7 +204,7 @@ Parameters for run `main.py`
 
 ### PopPipe Results
 
----
+
 
 Results from all steps
 
@@ -285,7 +285,7 @@ Results from all steps
 
 ### Run PopPipe for making the results
 
----
+
 
 - DATA
     - Four cattle population (Jersey, Simmental, Angus, Holstein from NCBI SRA, PRJNA238491, DOI: [10.1038/ng.3034](https://doi.org/10.1038/ng.3034))
@@ -306,12 +306,11 @@ Results from all steps
 
 ### **Included third party tools**
 
----
+
 
 See `Requirements/thirdPartyTools.txt`
 
 ### Contact
 
----
 
 [bioinfolabkr@gmail.com](mailto:bioinfolabkr@gmail.com)
